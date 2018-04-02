@@ -14,9 +14,19 @@ class CreateItemsTable extends Migration
     public function up()
     {
         Schema::create('items', function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id');
+            $table->primary('id');
+            $table->string('name');
+            //$table->uuid('category_id');
+            $table->string('desc');
+            $table->integer('price');
+            $table->integer('qty');
+            $table->string('imageUrl');
+            //$table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
+
+        DB::statement('ALTER TABLE items ALTER COLUMN id SET DEFAULT uuid_generate_v4();');
     }
 
     /**

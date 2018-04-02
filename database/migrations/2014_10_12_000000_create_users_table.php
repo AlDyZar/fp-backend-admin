@@ -14,13 +14,21 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id');
+            $table->primary('id');
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('last_name');
+            $table->string('email');
             $table->string('password');
+            $table->string('address');
+            $table->string('city');
+            $table->string('postal_code');
+            $table->string('phone');
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::statement('ALTER TABLE users ALTER COLUMN id SET DEFAULT uuid_generate_v4();');
     }
 
     /**

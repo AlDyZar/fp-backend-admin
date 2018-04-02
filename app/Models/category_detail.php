@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class cart extends Model
+class category_detail extends Model
 {
     //
     protected $hidden = [
